@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Lista samochodów</title>
+</head>
+<body>
+<h1>Lista samochodów</h1>
+<a href="/cars/create">Dodaj samochód</a>
+<table border="1">
+  <thead>
+  <tr>
+    <th>Marka</th>
+    <th>Model</th>
+    <th>Rok produkcji</th>
+    <th>Pojemność silnika</th>
+    <th>Konie mechaniczne</th>
+    <th>Liczba drzwi</th>
+    <th>Akcje</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="car : ${cars}">
+    <td th:text="${car.marka}"></td>
+    <td th:text="${car.model}"></td>
+    <td th:text="${car.rokProdukcji}"></td>
+    <td th:text="${car.pojemnoscSilnika}"></td>
+    <td th:text="${car.konieMechaniczne}"></td>
+    <td th:text="${car.liczbaDrzwi}"></td>
+    <td>
+      <a th:href="@{/cars/update/{id}(id=${car.id})}">Edytuj</a>
+      <a th:href="@{/cars/delete/{id}(id=${car.id})}">Usuń</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
